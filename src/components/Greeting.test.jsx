@@ -20,21 +20,21 @@ describe("<Greeting />", () => {
     expect(outputElement).toBeInTheDocument();
   });
 
-  test('renders "Lorem" only if the button was clicked', () => {
+  test('renders "Lorem" only if the button was clicked', async () => {
     render(<Greeting />);
 
     const buttonElement = screen.getByRole("button");
-    userEvent.click(buttonElement);
+    await userEvent.click(buttonElement);
 
     const outputElement = screen.getByText("Lorem");
     expect(outputElement).toBeInTheDocument();
   });
 
-  test('does not render "Ipsum" if button is clicked', () => {
+  test('does not render "Ipsum" if button is clicked', async () => {
     render(<Greeting />);
 
     const buttonElement = screen.getByRole("button");
-    userEvent.click(buttonElement);
+    await userEvent.click(buttonElement);
 
     const outputElement = screen.queryByText("Ipsum", {exact: false});
     expect(outputElement).toBeNull()
